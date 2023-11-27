@@ -19,7 +19,7 @@ import matplotlib.pyplot as plt
 import matplotlib.patches as patches
 from matplotlib.ticker import NullLocator
 
-kitti_weights = 'weights/kitti.weights'
+kitti_weights = 'weights/yolov3-kitti.weights'
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--image_folder', type=str, default='data/samples/', help='path to dataset')
@@ -86,8 +86,8 @@ for batch_i, (img_paths, input_imgs) in enumerate(dataloader):
     img_detections.extend(detections)
 
 # Bounding-box colors
-#cmap = plt.get_cmap('tab20b')
-cmap = plt.get_cmap('Vega20b')
+cmap = plt.get_cmap('tab20b')
+#cmap = plt.get_cmap('Vega20b')
 colors = [cmap(i) for i in np.linspace(0, 1, 20)]
 
 print ('\nSaving images:')
@@ -113,6 +113,8 @@ for img_i, (path, detections) in enumerate(zip(imgs, img_detections)):
     unpad_h = kitti_img_size - pad_y
     unpad_w = kitti_img_size - pad_x
 
+    mysave = open('/content/PyTorch-YOLOv3-kitti/detectdata/%s.txt' %(img_i), 'a')
+
     # Draw bounding boxes and labels of detections
     if detections is not None:
         print(type(detections))
@@ -123,11 +125,14 @@ for img_i, (path, detections) in enumerate(zip(imgs, img_detections)):
         for x1, y1, x2, y2, conf, cls_conf, cls_pred in detections:
 
             print ('\t+ Label: %s, Conf: %.5f' % (classes[int(cls_pred)], cls_conf.item()))
+            mysave.write('%s '%(classes[int(cls_pred)]))
             # Rescale coordinates to original dimensions
             box_h = int(((y2 - y1) / unpad_h) * (img.shape[0]))
             box_w = int(((x2 - x1) / unpad_w) * (img.shape[1]) )
             y1 = int(((y1 - pad_y // 2) / unpad_h) * (img.shape[0]))
             x1 = int(((x1 - pad_x // 2) / unpad_w) * (img.shape[1]))
+            print('box_y1: %f,box_x1: %f,box_h: %f,box_w: %f' % (y1, x1,box_h, box_w))
+            mysave.write("%f %f %f %f\n"%(y1,x1,box_h,box_w))
 
             color = bbox_colors[int(np.where(unique_labels == int(cls_pred))[0])]
             # Create a Rectangle patch
@@ -139,6 +144,7 @@ for img_i, (path, detections) in enumerate(zip(imgs, img_detections)):
             # Add label
             plt.text(x1, y1-30, s=classes[int(cls_pred)]+' '+ str('%.4f'%cls_conf.item()), color='white', verticalalignment='top',
                     bbox={'color': color, 'pad': 0})
+    mysave.close()
 
     # Save generated image with detections
     plt.axis('off')
