@@ -113,7 +113,7 @@ for img_i, (path, detections) in enumerate(zip(imgs, img_detections)):
     unpad_h = kitti_img_size - pad_y
     unpad_w = kitti_img_size - pad_x
 
-    mysave = open('/content/PyTorch-YOLOv3-kitti/detectdata/%s.txt' %(img_i), 'a')
+    mysave = open('/content/IOKENTOI-test/detectdata/%s.txt' %(img_i), 'a')
 
     # Draw bounding boxes and labels of detections
     if detections is not None:
