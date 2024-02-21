@@ -19,8 +19,12 @@ kitti_labels.sort()
 stopping_distance_x=[420,821]
 stopping_distance_y=[275,375]
 
-countT = 0
-countF = 0
+bbsl_countT = 0
+bbsl_countF = 0
+iou8_countT = 0
+iou8_countF = 0
+iou6_countT = 0
+iou6_countF = 0
 
 for indexi in range(len(kitti_labels)):
   kitti_label_totest_path = opt.labels_path + kitti_labels[indexi]
@@ -74,10 +78,28 @@ for indexi in range(len(kitti_labels)):
       object_detection_case="Not Stop"
 
     if(ground_truth_case==object_detection_case):
-      test = "T"
-      countT = countT + 1
+      bbsl_test = "T"
+      bbsl_countT = bbsl_countT + 1
     else:
-      test = "F"
-      countF = countF + 1
-    print('labelpath: %s,ground_truth_case: %s,object_detection_case: %s,test: %s' % (kitti_label_totest_path,ground_truth_case, object_detection_case,test))
-print ('countT: %s,countF: %s' % (countT,countF))
+      bbsl_test = "F"
+      bbsl_countF = bbsl_countF + 1
+
+    if(detext_iou>=80):
+      iou8_test = "T"
+      iou8_countT = iou8_countT + 1
+    else:
+      iou8_test = "F"
+      iou8_countF = iou8_countF + 1
+
+    if(detext_iou>=60):
+      iou6_test = "T"
+      iou6_countT = iou6_countT + 1
+    else:
+      iou6_test = "F"
+      iou6_countF = iou6_countF + 1
+      
+    print('labelpath: %s,ground_truth_case: %s,object_detection_case: %s,bbsl_test: %s,IoU0.8_test: %s,IoU0.6_test' % (kitti_label_totest_path,ground_truth_case, object_detection_case,bbsl_test,iou8_test,iou6_test))
+
+print ('IoU0.6_countT: %s,IoU0.6_countF: %s' % (iou6_countT,iou6_countF))
+print ('IoU0.8_countT: %s,IoU0.8_countF: %s' % (iou8_countT,iou8_countF))
+print ('bbsl_countT: %s,bbsl_countF: %s' % (bbsl_countT,bbsl_countF))
