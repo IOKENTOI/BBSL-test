@@ -27,6 +27,7 @@ iou6_countT = 0
 iou6_countF = 0
 
 for indexi in range(len(kitti_labels)):
+  print(indexi)
   kitti_label_totest_path = opt.labels_path + kitti_labels[indexi]
   kitti_label_totest = open(kitti_label_totest_path,'r')
   label_contents = kitti_label_totest.readlines()
@@ -46,7 +47,7 @@ for indexi in range(len(kitti_labels)):
       ground_truth_case="Not Stop"
     a=[x1,y1,x2,y2]
     detext_iou = 0
-    detect_label = open('/content/BBSL-test/detectdata/'+str(indexi)+".txt",'r')
+    detect_label = open('detectdata/'+str(indexi)+".txt",'r')
     detect_y1_t = 0
     detect_x1_t = 0
     detect_y2_t = 0
