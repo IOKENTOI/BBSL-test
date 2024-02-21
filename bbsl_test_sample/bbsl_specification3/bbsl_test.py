@@ -9,6 +9,8 @@ from .. import function as fc
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--labels_path', type=str, default='testing/lables/', help='path to ground truth labels')
+parser.add_argument('--direction_area_distance', type=int, required=True, nargs=2, help='value of directionAreaDistance')
+parser.add_argument('--stopping_distance', type=int, required=True, nargs=2, help='value of stoppingDistance')
 opt = parser.parse_args()
 print('Config:')
 print(opt)
@@ -16,8 +18,8 @@ print(opt)
 kitti_labels = os.listdir(opt.labels_path)
 kitti_labels.sort()
 
-stopping_distance_x=[420,821]
-stopping_distance_y=[275,375]
+stopping_distance_x=opt.direction_area_distance
+stopping_distance_y=opt.stopping_distance
 
 bbsl_countT = 0
 bbsl_countF = 0
