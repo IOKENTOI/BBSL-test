@@ -4,9 +4,15 @@ import cv2
 import os
 import sys
 import math
+import argparse
 
-kitti_label_path = '/content/drive/MyDrive/KITTI_MOD_fixed/testing/lables/'
-kitti_labels = os.listdir(kitti_label_path)
+parser = argparse.ArgumentParser()
+parser.add_argument('--labels_path', type=str, default='testing/lables/', help='path to ground truth labels')
+opt = parser.parse_args()
+print('Config:')
+print(opt)
+
+kitti_labels = os.listdir(opt.labels_path)
 kitti_labels.sort()
 
 stopping_distance_x=[420,821]
@@ -16,7 +22,7 @@ countT = 0
 countF = 0
 
 for indexi in range(len(kitti_labels)):
-  kitti_label_totest_path = kitti_label_path + kitti_labels[indexi]
+  kitti_label_totest_path = opt.labels_path + kitti_labels[indexi]
   kitti_label_totest = open(kitti_label_totest_path,'r')
   label_contents = kitti_label_totest.readlines()
 
