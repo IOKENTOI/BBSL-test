@@ -67,7 +67,7 @@ run`detect.py` to detect objects.
               [--n_cpu N_CPU] [--img_size IMG_SIZE]
               [--use_cuda BOOLEAN]
 
-When detection is complete, the image with the inference bounding box is output to `output/`, and the inference label data is output to 'detectdate/'.
+When detection is complete, the image with the inference bounding box is output to `output/`, and the inference label data is output to `detectdate/`.
 
 ## BBSL test
 
