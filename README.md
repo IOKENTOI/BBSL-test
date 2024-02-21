@@ -79,7 +79,7 @@ For this specification-based test,
 Please pass the grand truth label path of the image used during detection and the values of stoppingDistance and directionAreaDistance as arguments.
 
 You can run the following command.
-Make sure to run bbsl_test in `BBSL-test/`
+Make sure to run bbsl_test in `BBSL-test/`.
 
     $ cd BBSL-test/
     $ python3 -m bbsl_test_sample.bbsl_specification3.bbsl_test --labels_path GRAND_TRUTH_LABELS_PATH --stopping_distance 275 375 --direction_area_distance 420 821
