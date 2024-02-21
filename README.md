@@ -84,7 +84,7 @@ Make sure to run bbsl_test in `BBSL-test/`.
     $ cd BBSL-test/
     $ python3 -m bbsl_test_sample.bbsl_specification3.bbsl_test --labels_path GRAND_TRUTH_LABELS_PATH --stopping_distance 275 375 --direction_area_distance 420 821
 
-We plan to prepare a tool to convert specifications written in BBSL into test programs...
+We plan to prepare a tool to convert specifications written in BBSL into test programs from now on....
 
 ## Paper
 ### Specification Based Testing of Object Detection for Automated Driving Systems via BBSL
