@@ -16,7 +16,7 @@ If you want to try this tool right away, please use [this Notebook on Google Col
 
 
 ## Original repository
-This repo is forked from [packyan](https://github.com/eriklindernoren/PyTorch-YOLOv3) for image recognition trained from Kitti dataset.<br>
+This repo is forked from [packyan](https://github.com/packyan/PyTorch-YOLOv3-kitti) for image recognition trained from Kitti dataset.<br>
 The packyan repo is forked from [eriklindernoren](https://github.com/eriklindernoren/PyTorch-YOLOv3).
 
 ### YOLOv3: An Incremental Improvement
