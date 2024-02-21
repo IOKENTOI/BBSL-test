@@ -27,7 +27,6 @@ iou6_countT = 0
 iou6_countF = 0
 
 for indexi in range(len(kitti_labels)):
-  print(indexi)
   kitti_label_totest_path = opt.labels_path + kitti_labels[indexi]
   kitti_label_totest = open(kitti_label_totest_path,'r')
   label_contents = kitti_label_totest.readlines()
@@ -47,7 +46,7 @@ for indexi in range(len(kitti_labels)):
       ground_truth_case="Not Stop"
     a=[x1,y1,x2,y2]
     detext_iou = 0
-    detect_label = open('detectdata/'+str(indexi)+".txt",'r')
+    detect_label = open('detectdata/'+str(kitti_labels[indexi]),'r')
     detect_y1_t = 0
     detect_x1_t = 0
     detect_y2_t = 0
@@ -65,12 +64,12 @@ for indexi in range(len(kitti_labels)):
         detect_y2_t = float(detectdata[3])+detect_y1_t
         detect_x2_t = float(detectdata[4])+detect_x1_t
         b=[detect_x1_t,detect_y1_t,detect_x2_t,detect_y2_t]
-        if(detext_iou<ioufunc(a,b)):
+        if(detext_iou<fc.ioufunc(a,b)):
           detect_y1 = detect_y1_t
           detect_x1 = detect_x1_t
           detect_y2 = detect_y2_t
           detect_x2 = detect_x2_t
-          detext_iou = ioufunc(a,b)
+          detext_iou = fc.ioufunc(a,b)
     if(detext_iou == 0):
       object_detection_case="仕様外"
     elif((stopping_distance_y[0]<=detect_y2 and stopping_distance_y[1]>=detect_y1)and(stopping_distance_x[0]<=detect_x2 and stopping_distance_x[1]>=detect_x1)):
@@ -85,21 +84,21 @@ for indexi in range(len(kitti_labels)):
       bbsl_test = "F"
       bbsl_countF = bbsl_countF + 1
 
-    if(detext_iou>=80):
+    if(detext_iou>=0.8):
       iou8_test = "T"
       iou8_countT = iou8_countT + 1
     else:
       iou8_test = "F"
       iou8_countF = iou8_countF + 1
 
-    if(detext_iou>=60):
+    if(detext_iou>=0.6):
       iou6_test = "T"
       iou6_countT = iou6_countT + 1
     else:
       iou6_test = "F"
       iou6_countF = iou6_countF + 1
-      
-    print('labelpath: %s,ground_truth_case: %s,object_detection_case: %s,bbsl_test: %s,IoU0.8_test: %s,IoU0.6_test' % (kitti_label_totest_path,ground_truth_case, object_detection_case,bbsl_test,iou8_test,iou6_test))
+
+    print('labelpath: %s,ground_truth_case: %s,object_detection_case: %s,bbsl_test: %s,IoU0.8_test: %s,IoU0.6_test: %s' % (kitti_label_totest_path,ground_truth_case, object_detection_case,bbsl_test,iou8_test,iou6_test))
 
 print ('IoU0.6_countT: %s,IoU0.6_countF: %s' % (iou6_countT,iou6_countF))
 print ('IoU0.8_countT: %s,IoU0.8_countF: %s' % (iou8_countT,iou8_countF))
