@@ -73,6 +73,8 @@ When detection is complete, the image with the inference bounding box is output 
 
 run `test.py`
 
+We plan to prepare a tool to convert specifications written in BBSL into test programs...
+
 ## Paper
 ### Specification Based Testing of Object Detection for Automated Driving Systems via BBSL
 _Kento Tanaka, Toshiaki Aoki, Tatsuji Kawai, Takashi Tomita, Daisuke Kawakami, Nobuo Chida<br>_
