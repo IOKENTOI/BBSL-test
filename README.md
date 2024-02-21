@@ -56,8 +56,18 @@ and you should transfrom kitti lable to coco label, by using [label_transform](l
 
 ## Detect
 
-run`detect.py` to detect objects, and please put samples into `data/samples`
-defult weights files is `weights/kitti.weights`
+run`detect.py` to detect objects.
+
+    detect.py [--image_folder IMAGE_FOLDER]
+              [--config_path MODEL_CONFIG_PATH]
+              [--weights_path WEIGHTS_PATH]
+              [--class_path CLASS_PATH]
+              [--conf_thres CONF_THRES] [--nms_thres NMS_THRES]
+              [--batch_size BATCH_SIZE]
+              [--n_cpu N_CPU] [--img_size IMG_SIZE]
+              [--use_cuda BOOLEAN]
+
+When detection is complete, the image with the inference bounding box is output to `output/`, and the inference label data is output to 'detectdate/'.
 
 ## BBSL test
 
