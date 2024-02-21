@@ -70,8 +70,19 @@ run`detect.py` to detect objects.
 When detection is complete, the image with the inference bounding box is output to `output/`, and the inference label data is output to `detectdate/`.
 
 ## BBSL test
+![specification3](bbsl_test_sample/bbsl_specification3/specification3.png)
 
-run `test.py`
+Specification-based test program for the above specification written in BBSL is in `bbsl_test_sample
+/bbsl_specification3/`.
+
+For this specification-based test,
+Please pass the grand truth label path of the image used during detection and the values of stoppingDistance and directionAreaDistance as arguments.
+
+You can run the following command.
+Make sure to run bbsl_test in `BBSL-test/`
+
+    $ cd BBSL-test/
+    $ python3 -m bbsl_test_sample.bbsl_specification3.bbsl_test --labels_path GRAND_TRUTH_LABELS_PATH --stopping_distance 275 375 --direction_area_distance 420 821
 
 We plan to prepare a tool to convert specifications written in BBSL into test programs...
 
