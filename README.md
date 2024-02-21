@@ -1,9 +1,9 @@
-# PyTorch-YOLOv3-Kitti
-Minimal implementation of YOLOv3 in PyTorch.
-And Training from Kitti dataset
+# BBSL-testing-tools
+BBSL(Bounding Box Specification Language) is a formal language specifying spatial relation between Bounding Boxes within an image.
+
 
 ## Table of Contents
-- [PyTorch-YOLOv3](#pytorch-yolov3-kitti)
+- [BBSL-testing-tools](#bbsl-testing-tools)
   * [Table of Contents](#table-of-contents)
   * [Paper](#paper)
   * [Installation](#installation)
@@ -16,6 +16,7 @@ And Training from Kitti dataset
 
 
 ## HI THERE~ THIS repo is forked from [eriklindernoren](https://github.com/eriklindernoren/PyTorch-YOLOv3)
+
 
 ## Installation
     $ git clone https://github.com/packyan/PyTorch-YOLOv3-kitti.git
