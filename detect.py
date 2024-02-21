@@ -113,7 +113,9 @@ for img_i, (path, detections) in enumerate(zip(imgs, img_detections)):
     unpad_h = kitti_img_size - pad_y
     unpad_w = kitti_img_size - pad_x
 
-    mysave = open('/content/BBSL-test/detectdata/%s.txt' %(img_i), 'a')
+    basename_without_ext = os.path.splitext(os.path.basename(path))[0]
+
+    mysave = open('detectdata/%s.txt' %(basename_without_ext), 'a')
 
     # Draw bounding boxes and labels of detections
     if detections is not None:
@@ -150,5 +152,5 @@ for img_i, (path, detections) in enumerate(zip(imgs, img_detections)):
     plt.axis('off')
     plt.gca().xaxis.set_major_locator(NullLocator())
     plt.gca().yaxis.set_major_locator(NullLocator())
-    plt.savefig('output/%s.png' % (img_i), bbox_inches='tight', pad_inches=0.0)
+    plt.savefig('output/%s.png' % (basename_without_ext), bbox_inches='tight', pad_inches=0.0)
     plt.close()
