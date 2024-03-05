@@ -9,7 +9,7 @@ from .. import function as fc
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--labels_path', type=str, default='testing/lables/', help='path to ground truth labels')
-parser.add_argument('--stopping_distance', type=int, required=True, nargs=2, help='value of stoppingDistance')
+parser.add_argument('--direction_area_distance', type=int, required=True, nargs=2, help='value of directionAreaDistance')
 opt = parser.parse_args()
 print('Config:')
 print(opt)
@@ -17,7 +17,7 @@ print(opt)
 kitti_labels = os.listdir(opt.labels_path)
 kitti_labels.sort()
 
-stopping_distance_y=opt.stopping_distance
+stopping_distance_x=opt.direction_area_distance
 
 bbsl_countT = 0
 bbsl_countF = 0
@@ -40,7 +40,7 @@ for indexi in range(len(kitti_labels)):
     if(x1>1242):x1=1242
     if(x2>1242):x2=1242
 
-    if((stopping_distance_y[0]<=y2 and stopping_distance_y[1]>=y1)):
+    if(stopping_distance_x[0]<=x2 and stopping_distance_x[1]>=x1):
       ground_truth_case="Stop"
     else:
       ground_truth_case="Not Stop"
@@ -72,7 +72,7 @@ for indexi in range(len(kitti_labels)):
           detext_iou = fc.ioufunc(a,b)
     if(detext_iou == 0):
       object_detection_case="仕様外"
-    elif((stopping_distance_y[0]<=detect_y2 and stopping_distance_y[1]>=detect_y1)):
+    elif(stopping_distance_x[0]<=detect_x2 and stopping_distance_x[1]>=detect_x1):
       object_detection_case="Stop"
     else:
       object_detection_case="Not Stop"
