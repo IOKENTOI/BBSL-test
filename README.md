@@ -70,6 +70,9 @@ run`detect.py` to detect objects.
 When detection is complete, the image with the inference bounding box is output to `output/`, and the inference label data is output to `detectdate/`.
 
 ## BBSL test
+This tool supports the four types of specifications described in the paper.
+The following explanation uses the third specification as an example.
+
 ![specification3](bbsl_test_sample/bbsl_specification3/specification3.png)
 
 Specification-based test program for the above specification written in BBSL is in `bbsl_test_sample
