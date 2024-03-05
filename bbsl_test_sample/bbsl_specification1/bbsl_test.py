@@ -40,7 +40,7 @@ for indexi in range(len(kitti_labels)):
     if(x1>1242):x1=1242
     if(x2>1242):x2=1242
 
-    if((stopping_distance_y[0]<=y2 and stopping_distance_y[1]>=y1)):
+    if(stopping_distance_y[0]<=y2 and stopping_distance_y[1]>=y1):
       ground_truth_case="Stop"
     else:
       ground_truth_case="Not Stop"
@@ -72,7 +72,7 @@ for indexi in range(len(kitti_labels)):
           detext_iou = fc.ioufunc(a,b)
     if(detext_iou == 0):
       object_detection_case="仕様外"
-    elif((stopping_distance_y[0]<=detect_y2 and stopping_distance_y[1]>=detect_y1)):
+    elif(stopping_distance_y[0]<=detect_y2 and stopping_distance_y[1]>=detect_y1):
       object_detection_case="Stop"
     else:
       object_detection_case="Not Stop"
